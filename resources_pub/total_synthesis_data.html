@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Custom Background Page</title>
-  <style>
-    body {
-      background-color:#09202A; 
-      color: white;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-    }
-  </style>
+  <title>Display my_data.txt</title>
 </head>
 <body>
-  <h1>Welcome to My Page</h1>
-  <p>This page has a custom background color and white text.</p>
+  <h1>Contents of my_data.txt</h1>
+  <pre id="fileContent">Loading...</pre>
+
+  <script>
+    fetch('my_data.txt')
+      .then(response => response.text())
+      .then(text => {
+        document.getElementById('fileContent').textContent = text;
+      })
+      .catch(error => {
+        document.getElementById('fileContent').textContent = "Failed to load file.";
+        console.error('Error loading the file:', error);
+      });
+  </script>
 </body>
 </html>
