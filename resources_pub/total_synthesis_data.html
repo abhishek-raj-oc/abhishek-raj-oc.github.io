@@ -1,22 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Total Synthesis Data</title>
+  <title>View my_data.txt</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    pre {
+      background-color: #f0f0f0;
+      padding: 15px;
+      border: 1px solid #ccc;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  </style>
 </head>
 <body>
-  <h1>Total Synthesis Data</h1>
-  <pre id="fileContent">Loading...</pre>
+
+  <h1>Contents of Total Synthesis Data</h1>
+  <pre id="textContent">Loading...</pre>
 
   <script>
-    fetch('Total_Synthesis.csv')
-      .then(response => response.text())
+    fetch('Total_synthesis.csv')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text();
+      })
       .then(text => {
-        document.getElementById('fileContent').textContent = text;
+        document.getElementById('textContent').textContent = text;
       })
       .catch(error => {
-        document.getElementById('fileContent').textContent = "Failed to load file.";
-        console.error('Error loading the file:', error);
+        document.getElementById('textContent').textContent = 'Failed to load the file.';
+        console.error('Error fetching the file:', error);
       });
   </script>
+
 </body>
 </html>
