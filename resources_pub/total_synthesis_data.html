@@ -6,9 +6,10 @@
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
+      background-color: #f2f2f2; /* Light gray background */
     }
     pre {
-      background-color: #f0f0f0;
+      background-color: #ffffff;
       padding: 15px;
       border: 1px solid #ccc;
       white-space: pre-wrap;
@@ -22,7 +23,7 @@
   <pre id="textContent">Loading...</pre>
 
   <script>
-   fetch('https://raw.githubusercontent.com/abhishek-raj-oc/abhishek-raj-oc.github.io/main/resources_pub/Total_Synthesis.csv')
+    fetch('https://raw.githubusercontent.com/abhishek-raj-oc/abhishek-raj-oc.github.io/main/resources_pub/Total_Synthesis.csv')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
